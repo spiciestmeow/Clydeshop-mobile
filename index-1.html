@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Midasbuy - Honor of Kings</title>
+    <style>
+      * {
+        user-select: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #14182b;
+        color: white;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .mobile-only-notice {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        z-index: 9999;
+        color: white;
+        text-align: center;
+        padding-top: 30vh;
+        font-size: 20px;
+      }
+
+      .header-container {
+        background-image: linear-gradient(
+            to bottom,
+            rgba(23, 85, 152, 0.3),
+            rgba(23, 85, 152, 0.9)
+          ),
+          url("https://cdn1.codashop.com/S/content/common/images/mno/Honor-of-Kings_640x241%20(2).jpg");
+        background-size: cover;
+        background-position: center;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+      }
+
+      .header-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, #17559800 0%, #14182b 100%);
+        z-index: 0;
+      }
+
+      .header {
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .logo img {
+        height: 30px;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-button {
+        background-color: rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        padding: 5px 10px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .lang-button img {
+        width: 16px;
+        height: 12px;
+      }
+
+      .sign-in-button {
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .menu-button {
+        color: white;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .game-banner {
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .game-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .game-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .game-info {
+        flex: 1;
+      }
+
+      .game-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+
+      .game-actions {
+        display: flex;
+        gap: 10px;
+      }
+
+      .official-badge {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        padding: 3px 8px;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .download-button,
+      .subscribe-button {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      .nav-tabs {
+        display: flex;
+        justify-content: space-around;
+        padding: 15px 0;
+        border-bottom: 1px solid #222;
+      }
+
+      .nav-tab {
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+        padding-bottom: 5px;
+      }
+
+      .nav-tab.active {
+        color: #40e0ff;
+      }
+
+      .outer {
+        border-radius: 5px;
+        border: 5px solid #20253b;
+        margin: 20px;
+      }
+
+      .banner-carousel {
+        position: relative;
+        border-radius: 4px;
+        height: 190px;
+      }
+
+      .filter-section {
+        padding: 15px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .filter-dropdown {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background-color: #1a203b;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .filter-button {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+      }
+
+      .product-info-container {
+        background-color: #1c2236;
+        padding: 12px 0px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .product-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        padding: 0 15px;
+      }
+
+      /* Original Token Product Card Styles */
+      .product-card {
+        background: radial-gradient(
+          90% 77.72% at 0.08% 0,
+          #3166ff33 0%,
+          #20253b 100%
+        );
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .product-image {
+        margin: 20px;
+        width: auto;
+        height: 65px;
+      }
+
+      .bonus-badge {
+        background-color: #ff9c00;
+        border-radius: 15px 15px 15px 0px;
+        padding: 3px 8px;
+        font-size: 12px;
+        font-weight: bold;
+        position: absolute;
+        top: 95px;
+        right: 55px;
+      }
+
+      .product-details {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        position: relative;
+      }
+
+      .token-bonus {
+        color: #ffdd00;
+      }
+
+      .token-amount {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .token-icon {
+        width: auto;
+        height: 25px;
+      }
+
+      .product-price {
+        margin-top: 5px;
+        font-size: 16px;
+        font-weight: normal;
+        color: #ffdd00;
+      }
+
+      /* New Weekly Card Product Styles */
+      .weekly-card {
+        background: radial-gradient(
+          90% 77.72% at 0.08% 0,
+          #ff66cc33 0%,
+          #20253b 100%
+        );
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 2px 8px rgba(255, 102, 204, 0.2);
+      }
+
+      .weekly-image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 100%;
+      }
+
+      .weekly-image {
+        width: auto;
+        height: 220px;
+      }
+
+      .weekly-bonus-badge {
+        background-color: #ff9c00;
+        border-radius: 15px 15px 15px 0px;
+        padding: 4px 10px;
+        font-size: 13px;
+        font-weight: bold;
+        position: absolute;
+        top: 215px;
+        right: 20px;
+      }
+
+      .weekly-details-container {
+        width: 100%;
+        background-color: #1c2236;
+        padding: 10px 0;
+      }
+
+      .weekly-details {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        justify-content: center;
+      }
+
+      .weekly-token-bonus {
+        color: #ffdd00;
+      }
+
+      .weekly-token-amount {
+        font-size: 19px;
+      }
+
+      .weekly-token-icon {
+        width: auto;
+        height: 28px;
+      }
+
+      .weekly-price {
+        margin-top: 5px;
+        font-size: 17px;
+        font-weight: normal;
+        color: #ffdd00;
+        text-align: center;
+      }
+
+      @media screen and (min-width: 768px) {
+        #app-container {
+          max-width: 450px;
+          margin: 0 auto;
+          border-left: 1px solid #333;
+          border-right: 1px solid #333;
+          min-height: 100vh;
+          position: relative;
+        }
+
+        .mobile-only-notice {
+          display: block;
+        }
+      }
+
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-slides {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease;
+      }
+
+      .carousel-slide {
+        min-width: 100%;
+        height: 100%;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .carousel-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .carousel-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+        z-index: 10;
+      }
+
+      .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+
+      .carousel-dot.active {
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobile-only-notice">
+      <p>This application is designed for mobile devices only.</p>
+      <p>Please use a mobile device or resize your browser to continue.</p>
+    </div>
+
+    <div id="app-container">
+      <div class="header-container">
+        <div class="header">
+          <div class="logo">
+            <img src="https://i.ibb.co/9mBD0Gjg/clydelogo.png" alt="Midasbuy" />
+          </div>
+          <div class="header-right">
+            <div class="lang-button">
+              <div class="flag">
+                <img src="/api/placeholder/16/12" alt="Flag" />
+              </div>
+              EN
+            </div>
+            <a href="#" class="sign-in-button">Sign in</a>
+            <button class="menu-button">≡</button>
+          </div>
+        </div>
+
+        <div class="game-banner">
+          <div class="game-icon">
+            <img
+              src="https://cdn.midasbuy.com/images/midas_oversea/fdcc64181fad3fa25d67215dbc7b1dcd.png"
+              alt="Honor of Kings"
+            />
+          </div>
+          <div class="game-info">
+            <h1 class="game-title">Honor of Kings</h1>
+            <div class="game-actions">
+              <div class="official-badge"><span>●</span> Top Up</div>
+              <div class="download-button">
+                <span>⚡</span>
+                Fast Process
+              </div>
+              <!-- <div class="subscribe-button"><span>○</span> Subscribe</div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="outer">
+        <div class="banner-carousel">
+          <div class="carousel-container">
+            <div class="carousel-slides" id="carousel-slides"></div>
+            <div class="carousel-dots" id="carousel-dots"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="nav-tabs">
+        <div class="nav-tab">TOKENS</div>
+        <div class="nav-tab">WEEKLY CARD</div>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <!-- Product cards will be generated here dynamically -->
+      </div>
+    </div>
+    <script>
+      const carouselSlides = [
+        {
+          image:
+            "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
+        },
+        {
+          image:
+            "https://camp.honorofkings.com/camp/admin/default/aobNtbid.jpg",
+        },
+        {
+          image:
+            "https://camp.honorofkings.com/camp/admin/default/ooagzG1V.jpg",
+        },
+        {
+          image:
+            "https://camp.honorofkings.com/camp/admin/button/icon/CAChMk7O.jpg",
+        },
+        {
+          image:
+            "https://camp.honorofkings.com/camp/admin/default/Wgo4ndNv.jpg",
+        },
+      ];
+
+      const tokenProducts = [
+        {
+          image: "https://i.ibb.co/Z16q6rBZ/clydeshop-2-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "80",
+          bonus: "10%",
+          price: "₱ 44.00",
+        },
+        {
+          image: "https://i.ibb.co/Hp3M9CTW/clydeshop-3-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "240",
+          price: "₱ 145.00",
+        },
+        {
+          image: "https://i.ibb.co/tVT4qH8/clydeshop-4-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "400",
+          price: "₱ 243.00",
+        },
+        {
+          image: "https://i.ibb.co/tVT4qH8/clydeshop-4-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "560",
+          price: "₱ 333.00",
+        },
+        {
+          image: "https://i.ibb.co/Y4MB7D96/clydeshop-5-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "800+30",
+          price: "₱ 447",
+        },
+        {
+          image: "https://i.ibb.co/rfRV1r9L/clydeshop-6-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "1200+45",
+          price: "₱ 711.00",
+        },
+        {
+          image: "https://i.ibb.co/9mDRbWjR/clydeshop-7-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "2400+108",
+          price: "₱ 1,415.00",
+        },
+        {
+          image: "https://i.ibb.co/C5LYGFdH/clydeshop-8-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "4000+180",
+          price: "₱ 2,317.00",
+        },
+        {
+          image: "https://i.ibb.co/6JNNk2mw/clydeshop-9-tokens.png",
+          tokenIcon: "https://i.ibb.co/dsZkYbc0/clydeshop-tokens.png",
+          tokenAmount: "8000+360",
+          price: "₱ 4,465.00",
+        },
+      ];
+
+      const weeklyCardProducts = [
+        {
+          image:
+            "https://cdn.midasbuy.com/images/%E5%91%A8%E5%8D%A1%281%29.90981e9a.jpg",
+          tokenAmount: "Weekly Card",
+          bonus: "10%",
+          price: "₱ 99.00",
+        },
+        {
+          image:
+            "https://cdn.midasbuy.com/images/%E5%91%A8%E5%8D%A1plus.6b8e5a72.jpg",
+          tokenAmount: "Weekly Card Plus",
+          bonus: "10%",
+          price: "₱ 249.00",
+        },
+      ];
+
+      function createCarousel() {
+        const slidesContainer = document.getElementById("carousel-slides");
+        const dotsContainer = document.getElementById("carousel-dots");
+
+        slidesContainer.innerHTML = "";
+        dotsContainer.innerHTML = "";
+
+        carouselSlides.forEach((slide, index) => {
+          const slideElement = document.createElement("div");
+          slideElement.className = "carousel-slide";
+          slideElement.innerHTML = `
+      <img class="carousel-image" src="${slide.image}" alt="Promotion ${
+            index + 1
+          }">
+    `;
+          slidesContainer.appendChild(slideElement);
+
+          const dot = document.createElement("div");
+          dot.className = "carousel-dot" + (index === 0 ? " active" : "");
+          dot.dataset.index = index;
+          dotsContainer.appendChild(dot);
+        });
+
+        let currentIndex = 0;
+        const slideCount = carouselSlides.length;
+        let slideInterval;
+
+        function updateCarousel() {
+          slidesContainer.style.transform = `translateX(-${
+            currentIndex * 100
+          }%)`;
+          const dots = dotsContainer.querySelectorAll(".carousel-dot");
+          dots.forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentIndex);
+          });
+        }
+
+        function nextSlide() {
+          currentIndex = (currentIndex + 1) % slideCount;
+          updateCarousel();
+        }
+
+        function goToSlide(index) {
+          currentIndex = index;
+          updateCarousel();
+          resetInterval();
+        }
+
+        function resetInterval() {
+          clearInterval(slideInterval);
+          slideInterval = setInterval(nextSlide, 3000);
+        }
+
+        const dots = dotsContainer.querySelectorAll(".carousel-dot");
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            goToSlide(parseInt(dot.dataset.index));
+          });
+        });
+
+        slideInterval = setInterval(nextSlide, 3000);
+
+        const carousel = document.querySelector(".banner-carousel");
+        carousel.addEventListener("mouseenter", () =>
+          clearInterval(slideInterval)
+        );
+        carousel.addEventListener("mouseleave", resetInterval);
+
+        updateCarousel();
+      }
+
+      function createProductCard(product, isWeekly = false) {
+        const card = document.createElement("div");
+        card.className = isWeekly ? "weekly-card" : "product-card";
+
+        card.innerHTML = isWeekly
+          ? `
+      <div class="weekly-image-container">
+        <img class="weekly-image" src="${product.image}" alt="Game token" />
+        ${
+          product.bonus
+            ? `<div class="weekly-bonus-badge">${product.bonus}</div>`
+            : ""
+        }
+      </div>
+      ${
+        product.tokenAmount || product.price
+          ? `
+            <div class="weekly-details-container">
+              <div class="product-info-container">
+                ${
+                  product.tokenAmount
+                    ? `
+                      <div class="weekly-details">
+                        <span class="weekly-token-amount">${product.tokenAmount.replace(
+                          /\+(\d+)/,
+                          '<span class="weekly-token-bonus">+$1</span>'
+                        )}</span>
+                      </div>
+                    `
+                    : ""
+                }
+                ${
+                  product.price
+                    ? `<div class="weekly-price">${product.price}</div>`
+                    : ""
+                }
+              </div>
+            </div>
+          `
+          : ""
+      }
+    `
+          : `
+      <img class="product-image" src="${product.image}" alt="Game token" />
+      ${product.bonus ? `<div class="bonus-badge">${product.bonus}</div>` : ""}
+      ${
+        product.tokenAmount || product.price
+          ? `
+            <div class="product-info-container">
+              ${
+                product.tokenAmount
+                  ? `
+                    <div class="product-details">
+                      <img class="token-icon" src="${
+                        product.tokenIcon
+                      }" alt="Token" />
+                      <span class="token-amount">${product.tokenAmount.replace(
+                        /\+(\d+)/,
+                        '<span class="token-bonus">+$1</span>'
+                      )}</span>
+                    </div>
+                  `
+                  : ""
+              }
+              ${
+                product.price
+                  ? `<div class="product-price">${product.price}</div>`
+                  : ""
+              }
+            </div>
+          `
+          : ""
+      }
+    `;
+
+        return card;
+      }
+
+      function renderProducts(productList, isWeekly = false) {
+        const productGrid = document.getElementById("product-grid");
+        productGrid.innerHTML = "";
+
+        productList.forEach((product) => {
+          const card = createProductCard(product, isWeekly);
+          productGrid.appendChild(card);
+        });
+      }
+
+      document.querySelectorAll(".nav-tab").forEach((tab) => {
+        tab.addEventListener("click", function () {
+          document.querySelectorAll(".nav-tab").forEach((t) => {
+            t.classList.remove("active");
+          });
+          this.classList.add("active");
+
+          if (this.textContent === "TOKENS") {
+            renderProducts(tokenProducts, false);
+          } else if (this.textContent === "WEEKLY CARD") {
+            renderProducts(weeklyCardProducts, true);
+          }
+        });
+      });
+
+      document.querySelector(".nav-tab").classList.add("active");
+
+      function isMobile() {
+        return window.innerWidth < 768;
+      }
+
+      function updateMobileNotice() {
+        const notice = document.querySelector(".mobile-only-notice");
+        notice.style.display = isMobile() ? "none" : "block";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        updateMobileNotice();
+        renderProducts(tokenProducts, false);
+        createCarousel();
+      });
+
+      window.addEventListener("resize", updateMobileNotice);
+    </script>
+  </body>
+</html>
