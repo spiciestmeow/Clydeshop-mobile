@@ -2,15 +2,36 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://i.ibb.co/3986DcB0/Untitled-2.png"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Midasbuy - Honor of Kings</title>
+    <title>Clydeshop - Honor of Kings Discounted Game Credits</title>
     <style>
+      @font-face {
+        font-family: "ClydeShop-Regular";
+        src: url("clydeshop-regular.otf") format("woff2"),
+          url("clydeshop-regular.otf") format("truetype");
+        font-weight: normal;
+        font-style: swap;
+      }
+
+      @font-face {
+        font-family: "ClydeShop-Regular";
+        src: url("clydeshop-regular.otf") format("woff2"),
+          url("clydeshop-regular.otf") format("truetype");
+        font-weight: 500;
+        font-style: swap;
+      }
+
       * {
         user-select: none;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, sans-serif;
+        font-family: "ClydeShop-Regular";
       }
 
       body {
@@ -300,6 +321,19 @@
         color: #ffdd00;
       }
 
+      .certification-section {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin: 30px 0 20px;
+      }
+      .footer-copyright {
+        text-align: center;
+        font-size: 11px;
+        color: #8a8d98;
+        margin: 0 0 10px 0;
+      }
+
       /* New Weekly Card Product Styles */
       .weekly-card {
         background: radial-gradient(
@@ -437,6 +471,11 @@
       .carousel-dot.active {
         background-color: white;
       }
+      .semilabel {
+        font-size: 14px;
+        font-family: "ClydeShop-Regular";
+        font-weight: 500;
+      }
     </style>
   </head>
   <body>
@@ -451,7 +490,7 @@
           <div class="logo">
             <img src="https://i.ibb.co/9mBD0Gjg/clydelogo.png" alt="Midasbuy" />
           </div>
-          <div class="header-right">
+          <!-- <div class="header-right">
             <div class="lang-button">
               <div class="flag">
                 <img src="/api/placeholder/16/12" alt="Flag" />
@@ -460,7 +499,7 @@
             </div>
             <a href="#" class="sign-in-button">Sign in</a>
             <button class="menu-button">≡</button>
-          </div>
+          </div> -->
         </div>
 
         <div class="game-banner">
@@ -471,14 +510,19 @@
             />
           </div>
           <div class="game-info">
-            <h1 class="game-title">Honor of Kings</h1>
+            <h1 class="game-title">
+              Honor of Kings
+              <span class="semilabel"> [Discounted Game Credits]</span>
+            </h1>
             <div class="game-actions">
-              <div class="official-badge"><span>●</span> Top Up</div>
+              <div class="official-badge"><span>●</span>Top Up</div>
               <div class="download-button">
                 <span>⚡</span>
                 Fast Process
               </div>
-              <div class="subscribe-button"><span>○</span> Subscribe</div>
+              <div class="subscribe-button">
+                <span>🙅‍♀️</span> No to rush order
+              </div>
             </div>
           </div>
         </div>
@@ -500,6 +544,14 @@
 
       <div class="product-grid" id="product-grid"></div>
     </div>
+    <div class="certification-section">
+      <img
+        src="https://ugc.production.linktr.ee/7f03b3b1-db44-47c5-9b10-31b01468d2c8_tyhjyt1.png?io=true&size=avatar-v3_0"
+        alt="ClydeShop Logo"
+        style="width: auto; height: 40px; display: block"
+      />
+    </div>
+    <div class="footer-copyright">© 2025 Clydeshop. All Rights Reserved.</div>
     <script>
       const carouselSlides = [
         {
