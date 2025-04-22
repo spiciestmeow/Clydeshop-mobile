@@ -380,7 +380,7 @@
       }
 
       .weekly-token-amount {
-        font-size: 12px;
+        font-size: 19px;
       }
 
       .weekly-token-icon {
@@ -622,15 +622,34 @@
         }
       }
 
-      /* (small phones) */
-      @media (min-width: 475px) {
-        .outer {
-          margin: 15px;
-          border: 4px solid #20253b;
+      @media (max-width: 474px) {
+        .semilabel {
+          font-size: 11px;
         }
-        .banner-carousel {
-          height: 170px;
+        .top-up-badge {
+          font-size: 9px;
         }
+        .process-label {
+          font-size: 9px;
+        }
+        .no-rush-label {
+          font-size: 9px;
+        }
+        .weekly-token-amount {
+          font-size: 15px;
+        }
+        .weekly-price {
+          font-size: 13px;
+        }
+        .token-amount {
+          font-size: 15px;
+        }
+        .product-price {
+          font-size: 13px;
+        }
+      }
+
+      @media (min-width: 475px) and (max-width: 639px) {
         .semilabel {
           font-size: 12px;
         }
@@ -644,7 +663,7 @@
           font-size: 10px;
         }
         .weekly-token-amount {
-          font-size: 12px;
+          font-size: 16px;
         }
         .weekly-price {
           font-size: 14px;
@@ -657,15 +676,7 @@
         }
       }
 
-      /* (standard phones) */
-      @media (min-width: 640px) {
-        .outer {
-          margin: 20px;
-          border: 5px solid #20253b;
-        }
-        .banner-carousel {
-          height: 190px;
-        }
+      @media (min-width: 640px) and (max-width: 767px) {
         .semilabel {
           font-size: 13px;
         }
@@ -679,7 +690,7 @@
           font-size: 11px;
         }
         .weekly-token-amount {
-          font-size: 12px;
+          font-size: 17px;
         }
         .weekly-price {
           font-size: 15px;
@@ -692,39 +703,30 @@
         }
       }
 
-      /* (large phones/tablets) */
       @media (min-width: 768px) {
-        .outer {
-          margin: 20px auto;
-          max-width: 450px;
-          border: 5px solid #20253b;
-        }
-        .banner-carousel {
-          height: 200px;
-        }
         .semilabel {
-          font-size: 13px;
+          font-size: 14px;
         }
         .top-up-badge {
-          font-size: 11px;
-        }
-        .process-label {
-          font-size: 11px;
-        }
-        .no-rush-label {
-          font-size: 11px;
-        }
-        .weekly-token-amount {
           font-size: 12px;
         }
+        .process-label {
+          font-size: 12px;
+        }
+        .no-rush-label {
+          font-size: 12px;
+        }
+        .weekly-token-amount {
+          font-size: 19px;
+        }
         .weekly-price {
-          font-size: 15px;
+          font-size: 17px;
         }
         .token-amount {
-          font-size: 18px;
+          font-size: 20px;
         }
         .product-price {
-          font-size: 15px;
+          font-size: 16px;
         }
       }
     </style>
