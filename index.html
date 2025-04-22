@@ -988,10 +988,10 @@
           const slideElement = document.createElement("div");
           slideElement.className = "carousel-slide";
           slideElement.innerHTML = `
-            <img class="carousel-image" src="${slide.image}" alt="Promotion ${
+        <img class="carousel-image" src="${slide.image}" alt="Promotion ${
             index + 1
           }">
-    `;
+      `;
           slidesContainer.appendChild(slideElement);
 
           const dot = document.createElement("div");
@@ -1003,6 +1003,8 @@
         let currentIndex = 0;
         const slideCount = carouselSlides.length;
         let slideInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
 
         function updateCarousel() {
           slidesContainer.style.transform = `translateX(-${
@@ -1019,6 +1021,11 @@
           updateCarousel();
         }
 
+        function prevSlide() {
+          currentIndex = (currentIndex - 1 + slideCount) % slideCount;
+          updateCarousel();
+        }
+
         function goToSlide(index) {
           currentIndex = index;
           updateCarousel();
@@ -1030,6 +1037,35 @@
           slideInterval = setInterval(nextSlide, 3000);
         }
 
+        // Touch event handlers
+        function handleTouchStart(event) {
+          touchStartX = event.touches[0].clientX;
+          clearInterval(slideInterval);
+        }
+
+        function handleTouchMove(event) {
+          touchEndX = event.touches[0].clientX;
+        }
+
+        function handleTouchEnd() {
+          const swipeDistance = touchStartX - touchEndX;
+          const minSwipeDistance = 50; // Minimum distance for a swipe
+
+          if (swipeDistance > minSwipeDistance) {
+            nextSlide();
+          } else if (swipeDistance < -minSwipeDistance) {
+            prevSlide();
+          }
+          resetInterval();
+        }
+
+        // Add touch event listeners
+        const carousel = document.querySelector(".banner-carousel");
+        carousel.addEventListener("touchstart", handleTouchStart);
+        carousel.addEventListener("touchmove", handleTouchMove);
+        carousel.addEventListener("touchend", handleTouchEnd);
+
+        // Dot click events
         const dots = dotsContainer.querySelectorAll(".carousel-dot");
         dots.forEach((dot) => {
           dot.addEventListener("click", () => {
@@ -1037,14 +1073,13 @@
           });
         });
 
-        slideInterval = setInterval(nextSlide, 3000);
-
-        const carousel = document.querySelector(".banner-carousel");
+        // Mouse hover events
         carousel.addEventListener("mouseenter", () =>
           clearInterval(slideInterval)
         );
         carousel.addEventListener("mouseleave", resetInterval);
 
+        slideInterval = setInterval(nextSlide, 3000);
         updateCarousel();
       }
 
@@ -1065,28 +1100,28 @@
       ${
         product.tokenAmount || product.price
           ? `
-            <div class="weekly-details-container">
-              <div class="product-info-container">
-                ${
-                  product.tokenAmount
-                    ? `
-                      <div class="weekly-details">
-                        <span class="weekly-token-amount">${product.tokenAmount.replace(
-                          /\+(\d+)/,
-                          '<span class="weekly-token-bonus">+$1</span>'
-                        )}</span>
-                      </div>
-                    `
-                    : ""
-                }
-                ${
-                  product.price
-                    ? `<div class="weekly-price">${product.price}</div>`
-                    : ""
-                }
-              </div>
+          <div class="weekly-details-container">
+            <div class="product-info-container">
+              ${
+                product.tokenAmount
+                  ? `
+                  <div class="weekly-details">
+                    <span class="weekly-token-amount">${product.tokenAmount.replace(
+                      /\+(\d+)/,
+                      '<span class="weekly-token-bonus">+$1</span>'
+                    )}</span>
+                  </div>
+                `
+                  : ""
+              }
+              ${
+                product.price
+                  ? `<div class="weekly-price">${product.price}</div>`
+                  : ""
+              }
             </div>
-          `
+          </div>
+        `
           : ""
       }
     `
@@ -1096,29 +1131,29 @@
       ${
         product.tokenAmount || product.price
           ? `
-            <div class="product-info-container">
-              ${
-                product.tokenAmount
-                  ? `
-                    <div class="product-details">
-                      <img class="token-icon" src="${
-                        product.tokenIcon
-                      }" alt="Token" />
-                      <span class="token-amount">${product.tokenAmount.replace(
-                        /\+(\d+)/,
-                        '<span class="token-bonus">+$1</span>'
-                      )}</span>
-                    </div>
-                  `
-                  : ""
-              }
-              ${
-                product.price
-                  ? `<div class="product-price">${product.price}</div>`
-                  : ""
-              }
-            </div>
-          `
+          <div class="product-info-container">
+            ${
+              product.tokenAmount
+                ? `
+                <div class="product-details">
+                  <img class="token-icon" src="${
+                    product.tokenIcon
+                  }" alt="Token" />
+                  <span class="token-amount">${product.tokenAmount.replace(
+                    /\+(\d+)/,
+                    '<span class="token-bonus">+$1</span>'
+                  )}</span>
+                </div>
+              `
+                : ""
+            }
+            ${
+              product.price
+                ? `<div class="product-price">${product.price}</div>`
+                : ""
+            }
+          </div>
+        `
           : ""
       }
     `;
