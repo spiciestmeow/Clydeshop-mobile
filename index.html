@@ -418,17 +418,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: calc(100% - 20px);
-        max-width: 100%;
-        height: auto;
-        aspect-ratio: 16 / 9;
       }
 
       .banner-carousel {
         position: relative;
         border-radius: 4px;
-        width: 100%;
-        height: 100%;
+        height: 150px;
         overflow: hidden;
       }
 
@@ -456,7 +451,7 @@
       .carousel-image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
         object-position: center;
       }
 
@@ -635,7 +630,9 @@
         .outer {
           margin: 8px;
           border: 2px solid #20253b;
-          width: calc(100% - 16px);
+        }
+        .banner-carousel {
+          height: 130px;
         }
         .semilabel {
           font-size: 11px;
@@ -667,7 +664,9 @@
         .outer {
           margin: 15px;
           border: 4px solid #20253b;
-          width: calc(100% - 30px);
+        }
+        .banner-carousel {
+          height: 170px;
         }
         .semilabel {
           font-size: 12px;
@@ -699,7 +698,9 @@
         .outer {
           margin: 20px;
           border: 5px solid #20253b;
-          width: calc(100% - 40px);
+        }
+        .banner-carousel {
+          height: 190px;
         }
         .semilabel {
           font-size: 13px;
@@ -732,7 +733,9 @@
           margin: 20px auto;
           max-width: 450px;
           border: 5px solid #20253b;
-          width: calc(100% - 40px);
+        }
+        .banner-carousel {
+          height: 200px;
         }
         .semilabel {
           font-size: 14px;
