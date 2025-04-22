@@ -415,6 +415,9 @@
         border-radius: 5px;
         border: 3px solid #20253b;
         margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       .banner-carousel {
@@ -448,7 +451,8 @@
       .carousel-image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
       }
 
       .carousel-dots {
@@ -623,6 +627,13 @@
       }
 
       @media (max-width: 474px) {
+        .outer {
+          margin: 8px;
+          border: 2px solid #20253b;
+        }
+        .banner-carousel {
+          height: 130px;
+        }
         .semilabel {
           font-size: 11px;
         }
@@ -650,6 +661,13 @@
       }
 
       @media (min-width: 475px) and (max-width: 639px) {
+        .outer {
+          margin: 15px;
+          border: 4px solid #20253b;
+        }
+        .banner-carousel {
+          height: 170px;
+        }
         .semilabel {
           font-size: 12px;
         }
@@ -677,6 +695,13 @@
       }
 
       @media (min-width: 640px) and (max-width: 767px) {
+        .outer {
+          margin: 20px;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 190px;
+        }
         .semilabel {
           font-size: 13px;
         }
@@ -704,6 +729,14 @@
       }
 
       @media (min-width: 768px) {
+        .outer {
+          margin: 20px auto;
+          max-width: 450px;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 200px;
+        }
         .semilabel {
           font-size: 14px;
         }
@@ -727,6 +760,17 @@
         }
         .product-price {
           font-size: 16px;
+        }
+        #app-container {
+          max-width: 450px;
+          margin: 0 auto;
+          border-left: 1px solid #333;
+          border-right: 1px solid #333;
+          min-height: 100vh;
+          position: relative;
+        }
+        .mobile-only-notice {
+          display: block;
         }
       }
     </style>
