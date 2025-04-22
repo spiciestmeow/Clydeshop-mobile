@@ -205,18 +205,6 @@
         color: #40e0ff;
       }
 
-      .outer {
-        border-radius: 5px;
-        border: 5px solid #20253b;
-        margin: 20px;
-      }
-
-      .banner-carousel {
-        position: relative;
-        border-radius: 4px;
-        height: 190px;
-      }
-
       .filter-section {
         padding: 15px;
 
@@ -423,6 +411,19 @@
         }
       }
 
+      .outer {
+        border-radius: 5px;
+        border: 3px solid #20253b;
+        margin: 10px;
+      }
+
+      .banner-carousel {
+        position: relative;
+        border-radius: 4px;
+        height: 150px;
+        overflow: hidden;
+      }
+
       .carousel-container {
         position: relative;
         width: 100%;
@@ -550,7 +551,6 @@
         width: 100%;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s;
-        text-transform: capitalize;
       }
 
       .whatsapp-button-icon {
@@ -620,6 +620,74 @@
           width: 32px;
           height: 32px;
         }
+      }
+
+      /* (small phones) */
+      @media (min-width: 475px) {
+        .outer {
+          margin: 15px;
+          border: 4px solid #20253b;
+        }
+        .banner-carousel {
+          height: 170px;
+        }
+      }
+
+      /* (standard phones) */
+      @media (min-width: 640px) {
+        .outer {
+          margin: 20px;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 190px;
+        }
+      }
+
+      /* (large phones/tablets) */
+      @media (min-width: 768px) {
+        .outer {
+          margin: 20px auto;
+          max-width: 450px;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 200px;
+        }
+      }
+
+      /* (small laptops/desktops) */
+      @media (min-width: 1024px) {
+        .outer {
+          max-width: 450px;
+          margin: 20px auto;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 220px;
+        }
+      }
+      /* (large desktops) */
+      @media (min-width: 1280px) {
+        .outer {
+          max-width: 450px;
+          margin: 20px auto;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 240px;
+        }
+      }
+
+      /* (extra-large screens) */
+      @media (min-width: 1536px) {
+        .outer {
+          max-width: 450px;
+          margin: 20px auto;
+          border: 5px solid #20253b;
+        }
+        .banner-carousel {
+          height: 260px;
       }
     </style>
   </head>
@@ -836,7 +904,7 @@
           const slideElement = document.createElement("div");
           slideElement.className = "carousel-slide";
           slideElement.innerHTML = `
-      <img class="carousel-image" src="${slide.image}" alt="Promotion ${
+            <img class="carousel-image" src="${slide.image}" alt="Promotion ${
             index + 1
           }">
     `;
