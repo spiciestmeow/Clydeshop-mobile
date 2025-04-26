@@ -736,7 +736,7 @@
           border: 5px solid #20253b;
         }
         .banner-carousel {
-          height: 190px;
+          height: 270px;
         }
         .semilabel {
           font-size: 13px;
@@ -1108,22 +1108,6 @@
           image:
             "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
         },
-        {
-          image:
-            "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
-        },
-        {
-          image:
-            "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
-        },
-        {
-          image:
-            "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
-        },
-        {
-          image:
-            "https://camp.honorofkings.com/camp/admin/default/p9nwkZ4C.jpg",
-        },
       ];
 
       const tokenProducts = [
@@ -1216,11 +1200,17 @@
       `;
           slidesContainer.appendChild(slideElement);
 
-          const dot = document.createElement("div");
-          dot.className = "carousel-dot" + (index === 0 ? " active" : "");
-          dot.dataset.index = index;
-          dotsContainer.appendChild(dot);
+          if (carouselSlides > 1) {
+            const dot = document.createElement("div");
+            dot.className = "carousel-dot" + (index === 0 ? " active" : "");
+            dot.dataset.index = index;
+            dotsContainer.appendChild(dot);
+          }
         });
+
+        if (carouselSlides <= 1) {
+          dotsContainer.style.slide = "none";
+        }
 
         let currentIndex = 0;
         const slideCount = carouselSlides.length;
