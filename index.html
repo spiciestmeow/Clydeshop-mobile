@@ -64,13 +64,14 @@
       .header-container {
         background-image: linear-gradient(
             to bottom,
-            rgba(23, 85, 152, 0.3),
-            rgba(23, 85, 152, 0.9)
+            rgba(23, 85, 152, 0.1) 0%,
+            rgba(23, 85, 152, 0.3) 70%,
+            rgba(23, 85, 152, 0.9) 100%
           ),
-          url("https://cdn1.codashop.com/S/content/common/images/mno/Honor-of-Kings_640x241%20(2).jpg");
+          url("https://i.ytimg.com/vi/bSE61DC6-ik/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAtwhgUsT9hNxRhcGRVR2UWM8PA6g");
         background-size: cover;
         background-position: center;
-        height: 200px;
+        height: 240px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -327,7 +328,6 @@
         margin: 0 0 10px 0;
       }
 
-      /* New Weekly Card Product Styles */
       .weekly-card {
         background: radial-gradient(
           90% 77.72% at 0.08% 0,
@@ -488,7 +488,6 @@
         font-weight: 500;
       }
 
-      /* WHATSAPP */
       .whatsapp-popup {
         display: none;
         position: fixed;
@@ -607,7 +606,7 @@
         align-items: center;
         justify-content: center;
         gap: 6px;
-        background-color: #0084ff; /* Messenger blue */
+        background-color: #0084ff;
         color: #fff;
         font-weight: 600;
         font-size: 12px;
@@ -621,7 +620,7 @@
       }
 
       .messenger-chat-button:hover {
-        background-color: #006acc; /* Darker blue on hover */
+        background-color: #006acc;
       }
 
       .whatsapp-button {
@@ -823,7 +822,6 @@
         }
       }
 
-      /* footer */
       .footer-left {
         flex: 1;
         min-width: 300px;
@@ -1072,7 +1070,7 @@
     >
       <img
         style="color: white"
-        src="https://img.icons8.com/?size=100&id=oCH0GD39suHx&format=png&color=000000"
+        src="https://img.icons8.com/?size=100&id=oCH0GD39suHx&format=png&color=FFFFFF"
         alt="WhatsApp"
       />
     </a>
@@ -1262,7 +1260,6 @@
           slideInterval = setInterval(nextSlide, 3000);
         }
 
-        // Touch event handlers
         function handleTouchStart(event) {
           touchStartX = event.touches[0].clientX;
           clearInterval(slideInterval);
@@ -1274,7 +1271,7 @@
 
         function handleTouchEnd() {
           const swipeDistance = touchStartX - touchEndX;
-          const minSwipeDistance = 50; // Minimum distance for a swipe
+          const minSwipeDistance = 50;
 
           if (swipeDistance > minSwipeDistance) {
             nextSlide();
@@ -1284,13 +1281,11 @@
           resetInterval();
         }
 
-        // Add touch event listeners
         const carousel = document.querySelector(".banner-carousel");
         carousel.addEventListener("touchstart", handleTouchStart);
         carousel.addEventListener("touchmove", handleTouchMove);
         carousel.addEventListener("touchend", handleTouchEnd);
 
-        // Dot click events
         const dots = dotsContainer.querySelectorAll(".carousel-dot");
         dots.forEach((dot) => {
           dot.addEventListener("click", () => {
@@ -1298,7 +1293,6 @@
           });
         });
 
-        // Mouse hover events
         carousel.addEventListener("mouseenter", () =>
           clearInterval(slideInterval)
         );
