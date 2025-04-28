@@ -1,0 +1,912 @@
+.float-socmod {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+@font-face {
+  font-family: "ClydeShop-Regular";
+  src: url("../assets/font/clydeshop-regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ClydeShop-Regular";
+  src: url("../assets/font/clydeshop-regular.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "ClydeShop-Regular", sans-serif;
+}
+
+body {
+  background-color: #14182b;
+  color: white;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mobile-only-notice {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  color: white;
+  text-align: center;
+  padding-top: 30vh;
+  font-size: 20px;
+}
+
+.header-container {
+  background-image: linear-gradient(
+      to bottom,
+      rgba(23, 85, 152, 0.1) 0%,
+      rgba(23, 85, 152, 0.3) 70%,
+      rgba(23, 85, 152, 0.9) 100%
+    ),
+    url("https://i.ytimg.com/vi/bSE61DC6-ik/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAtwhgUsT9hNxRhcGRVR2UWM8PA6g");
+  background-size: cover;
+  background-position: center;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, #17559800 0%, #14182b 100%);
+  z-index: 0;
+}
+
+.header {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.logo img {
+  height: 30px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-button {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.lang-button img {
+  width: 16px;
+  height: 12px;
+}
+
+.sign-in-button {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.menu-button {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.game-banner {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.game-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.game-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.game-info {
+  flex: 1;
+}
+
+.game-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.top-up-badge {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  padding: 3px 8px;
+  font-size: 19px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.process-label,
+.no-rush-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px 0;
+  border-bottom: 1px solid #222;
+}
+
+.nav-tab {
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  padding-bottom: 5px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-tab.active {
+  color: #40e0ff;
+}
+
+.filter-section {
+  padding: 15px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1a203b;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.filter-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.product-info-container {
+  background-color: #1c2236;
+  padding: 12px 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 0 15px;
+}
+
+.product-card {
+  background: radial-gradient(
+    90% 77.72% at 0.08% 0,
+    #3166ff33 0%,
+    #20253b 100%
+  );
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.product-image {
+  margin: 20px;
+  width: auto;
+  height: 65px;
+}
+
+.bonus-badge {
+  background-color: #ff9c00;
+  border-radius: 15px 15px 15px 0px;
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: 95px;
+  right: 55px;
+}
+
+.product-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: relative;
+}
+
+.token-bonus {
+  color: #ffdd00;
+}
+
+.token-amount {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.token-icon {
+  width: auto;
+  height: 25px;
+}
+
+.product-price {
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #ffdd00;
+}
+
+.certification-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.footer-copyright {
+  text-align: center;
+  font-size: 11px;
+  color: #8a8d98;
+  margin: 0 0 10px 0;
+}
+
+.weekly-card {
+  background: radial-gradient(
+    90% 77.72% at 0.08% 0,
+    #ff66cc33 0%,
+    #20253b 100%
+  );
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.weekly-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.weekly-image {
+  width: auto;
+  height: 230px;
+}
+
+.weekly-bonus-badge {
+  background-color: #ff9c00;
+  border-radius: 15px 15px 15px 0px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: bold;
+  position: absolute;
+  top: 215px;
+  right: 20px;
+}
+
+.weekly-details-container {
+  width: 100%;
+  background-color: #1c2236;
+  padding: 10px 0;
+}
+
+.weekly-details {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.weekly-token-bonus {
+  color: #ffdd00;
+}
+
+.weekly-token-amount {
+  font-size: 19px;
+}
+
+.weekly-token-icon {
+  width: auto;
+  height: 28px;
+}
+
+.weekly-price {
+  margin-top: 5px;
+  font-size: 17px;
+  font-weight: normal;
+  color: #ffdd00;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  #app-container {
+    max-width: 450px;
+    margin: 0 auto;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  .mobile-only-notice {
+    display: block;
+  }
+}
+
+.outer {
+  border-radius: 5px;
+  border: 3px solid #20253b;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-carousel {
+  position: relative;
+  border-radius: 4px;
+  height: auto;
+  overflow: hidden;
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.carousel-slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-slide {
+  min-width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background-color: white;
+}
+.semilabel {
+  color: #ffdd00;
+  font-size: 14px;
+  font-family: "ClydeShop-Regular";
+  font-weight: 500;
+}
+
+.whatsapp-popup {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background-color: #1a1629;
+  border: 1px solid #2d2842;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  z-index: 1001;
+  width: 220px;
+  text-align: left;
+}
+
+.whatsapp-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.whatsapp-logo {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.whatsapp-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatsapp-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.whatsapp-verified {
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  object-fit: contain;
+  image-rendering: auto;
+  margin-left: 2px;
+  display: inline-block;
+}
+
+.whatsapp-subtitle {
+  font-size: 10px;
+  color: #b8a9ff;
+  font-weight: 400;
+}
+
+.whatsapp-chat-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #25d366;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.whatsapp-button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.whatsapp-chat-button:hover {
+  background-color: #20b358;
+}
+
+@media (max-width: 767px) {
+  .whatsapp-verified {
+    width: 12px;
+    height: 12px;
+  }
+  .whatsapp-popup {
+    bottom: 80px;
+    right: 15px;
+    width: 200px;
+  }
+
+  .whatsapp-title {
+    font-size: 13px;
+  }
+
+  .whatsapp-chat-button {
+    font-size: 11px;
+    padding: 7px;
+  }
+
+  .whatsapp-button-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.messenger-chat-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #0084ff;
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.messenger-chat-button:hover {
+  background-color: #006acc;
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25d366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: transform 0.3s, background-color 0.3s;
+  text-decoration: none;
+}
+
+.whatsapp-button img {
+  width: 40px;
+  height: 40px;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.1);
+  background-color: #20b358;
+}
+
+@media (max-width: 364px) {
+  .outer {
+    margin: 8px;
+    border: 2px solid #20253b;
+  }
+  .banner-carousel {
+    height: 20px;
+  }
+  .carousel-image {
+    height: 150px;
+  }
+}
+
+@media (max-width: 474px) {
+  .outer {
+    margin: 8px;
+    border: 2px solid #20253b;
+  }
+  .banner-carousel {
+    height: 150px;
+  }
+  .semilabel {
+    font-size: 11px;
+  }
+  .top-up-badge {
+    font-size: 9px;
+  }
+  .process-label {
+    font-size: 9px;
+  }
+  .no-rush-label {
+    font-size: 9px;
+  }
+  .weekly-token-amount {
+    font-size: 15px;
+  }
+  .weekly-price {
+    font-size: 13px;
+  }
+  .token-amount {
+    font-size: 15px;
+  }
+  .product-price {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 475px) and (max-width: 639px) {
+  .outer {
+    margin: 15px;
+    border: 4px solid #20253b;
+  }
+  .banner-carousel {
+    height: 190px;
+  }
+  .semilabel {
+    font-size: 12px;
+  }
+  .top-up-badge {
+    font-size: 10px;
+  }
+  .process-label {
+    font-size: 10px;
+  }
+  .no-rush-label {
+    font-size: 10px;
+  }
+  .weekly-token-amount {
+    font-size: 16px;
+  }
+  .weekly-price {
+    font-size: 14px;
+  }
+  .token-amount {
+    font-size: 16px;
+  }
+  .product-price {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+  .outer {
+    margin: 20px;
+    border: 5px solid #20253b;
+  }
+  .banner-carousel {
+    height: 310px;
+  }
+  .semilabel {
+    font-size: 13px;
+  }
+  .top-up-badge {
+    font-size: 11px;
+  }
+  .process-label {
+    font-size: 11px;
+  }
+  .no-rush-label {
+    font-size: 11px;
+  }
+  .weekly-token-amount {
+    font-size: 17px;
+  }
+  .weekly-price {
+    font-size: 15px;
+  }
+  .token-amount {
+    font-size: 18px;
+  }
+  .product-price {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 767px) {
+  .whatsapp-button {
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp-button img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (min-width: 768px) {
+  .outer {
+    margin: 20px auto;
+    max-width: 450px;
+    border: 5px solid #20253b;
+  }
+  .banner-carousel {
+    height: 200px;
+  }
+  .semilabel {
+    font-size: 14px;
+  }
+  .top-up-badge {
+    font-size: 14px;
+  }
+  .process-label {
+    font-size: 12px;
+  }
+  .no-rush-label {
+    font-size: 12px;
+  }
+  .weekly-token-amount {
+    font-size: 19px;
+  }
+  .weekly-price {
+    font-size: 17px;
+  }
+  .token-amount {
+    font-size: 20px;
+  }
+  .product-price {
+    font-size: 16px;
+  }
+  #app-container {
+    max-width: 450px;
+    margin: 0 auto;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    min-height: 100vh;
+    position: relative;
+  }
+  .mobile-only-notice {
+    display: block;
+  }
+}
+
+.footer-left {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 30px;
+}
+.footer-right {
+  flex: 1;
+  min-width: 300px;
+}
+.midasbuy-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.midasbuy-logo img {
+  height: 24px;
+  margin-right: 10px;
+}
+.midasbuy-tagline {
+  font-size: 12px;
+  color: #fff;
+}
+.payment-section,
+.social-section {
+  margin: 25px 0;
+}
+.section-title {
+  font-size: 13px;
+  margin-bottom: 9px;
+  font-weight: 500;
+  color: #fff;
+}
+.payment-icons,
+.social-icons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.facebook {
+  background-color: #1877f2;
+}
+.instagram {
+  background-color: #e4405f;
+}
+.social-icon img {
+  width: 40px;
+  height: 40px;
+}
+.certification-section {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.footer-copyright {
+  text-align: center;
+  font-size: 11px;
+  color: #8a8d98;
+}
+.payment-marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.payment-marquee {
+  display: flex;
+  width: max-content;
+  animation: 20s linear infinite marquee;
+}
+.payment-icon {
+  width: 48px;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.payment-icon img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.footer-container {
+  padding: 40px 20px 0px 20px;
+}
+@keyframes marquee {
+  0%,
+  100% {
+    transform: translateX(-50%);
+  }
+}
