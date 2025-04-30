@@ -185,7 +185,6 @@ body {
   display: flex;
   justify-content: space-around;
   padding: 15px 0;
-  border-bottom: 1px solid #222;
 }
 
 .nav-tab {
